@@ -11,7 +11,7 @@ The javascript file for the trivia handles all the game logic and drawing for tr
 // JavaScript function that wraps everything
 
 $(document).ready(function () {
-    var topics = ["cat", "dog"];
+    var topics = ["cat", "dog", "fish", "dolphin"];
 
 
     function createTopicButton(topic) {
@@ -31,6 +31,7 @@ $(document).ready(function () {
                 .then(function (response) {
                     var results = response.data;
                     $("#gifs").empty();
+                    
                     for (var i = 0; i < results.length; i++) {
                         var gifDiv = $("<div>");
                         var rating = results[i].rating;
@@ -42,6 +43,7 @@ $(document).ready(function () {
                         gifImage.attr("data-still", results[i].images.fixed_height_still.url);
                         gifImage.attr("data-animate", results[i].images.fixed_height.url);
                         gifImage.attr("data-state", "still");
+
                         gifDiv.prepend(p);
                         gifDiv.prepend(gifImage);
 
